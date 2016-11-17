@@ -1,0 +1,23 @@
+{
+  "name": "css-in-js-perf-tests",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PepijnSenders/css-in-js-perf-tests.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/PepijnSenders/css-in-js-perf-tests/issues"
+  },
+  "homepage": "https://github.com/PepijnSenders/css-in-js-perf-tests#readme",
+  "dependencies": {
+    "benchmark": "^2.1.2"
+  }
+}
