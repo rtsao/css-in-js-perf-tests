@@ -6,7 +6,7 @@ import { renderStatic } from 'glamor/server';
 import { style } from 'glamor';
 
 export const glamorCase = () => {
-    const useStyles = {
+    const classNames = {
         html: style(styles.html),
         body: style(styles.body),
         button: style(styles.button),
@@ -15,9 +15,9 @@ export const glamorCase = () => {
     return renderStatic(() =>
         renderToString((
             <App classNames={{
-                html: useStyles.html,
-                body: useStyles.body,
-                button: useStyles.button,
+                html: classNames.html,
+                body: classNames.body,
+                button: classNames.button,
             }} />
         ))
     );

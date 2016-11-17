@@ -7,7 +7,7 @@ export const App = ({ classNames }) => (
             <title>React test</title>
         </head>
         <body className={classNames.body}>
-            <Button classNames={classNames.button}>
+            <Button className={classNames.button}>
                 Test button
             </Button>
         </body>
