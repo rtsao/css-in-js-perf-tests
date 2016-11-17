@@ -2,12 +2,6 @@ import { Suite } from 'benchmark';
 import beautifyBenchmark from 'beautify-benchmark';
 import { aphroditeCase, jssCase, glamorCase, jssWithoutPresetCase, cxsCase } from './cases';
 
-console.log('aphrodite', aphroditeCase());
-console.log('cxs', cxsCase());
-console.log('glamor', glamorCase());
-console.log('jssWithoutPreset', jssWithoutPresetCase());
-console.log('jss', jssCase());
-
 const jssSuite = new Suite();
 
 jssSuite.add('aphrodite', () => {
