@@ -1,6 +1,6 @@
 import { Suite } from 'benchmark';
 import beautifyBenchmark from 'beautify-benchmark';
-import { aphroditeCase, jssCase, glamorCase } from './cases';
+import { aphroditeCase, jssCase, glamorCase, jssWithoutPresetCase } from './cases';
 
 // console.log(aphroditeCase(), jssCase(), glamorCase());
 
@@ -14,11 +14,16 @@ jssSuite.add('jss', () => {
     return jssCase();
 });
 
+jssSuite.add('jss-without-preset', () => {
+    return jssWithoutPresetCase();
+});
+
 jssSuite.add('glamor', () => {
     return glamorCase();
 });
 
 jssSuite.on('cycle', (e) => {
+    console.log(String(e.target));
     beautifyBenchmark.add(e.target);
 });
 
