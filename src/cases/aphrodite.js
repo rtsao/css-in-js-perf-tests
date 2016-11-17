@@ -1,19 +1,27 @@
 import React from 'react';
 import { renderToString } from 'react-dom/server';
-import { StyleSheet, css, StyleSheetServer } from 'aphrodite';
+import { StyleSheet, css as aphroditeCss, StyleSheetServer } from 'aphrodite';
 import { App } from '../components/App';
 import { styles } from '../styles';
 
 export const aphroditeCase = () => {
     const useStyles = StyleSheet.create(styles);
 
-    return StyleSheetServer.renderStatic(() =>
+    const { html, css } = StyleSheetServer.renderStatic(() =>
         renderToString((
             <App classNames={{
-                html: css(useStyles.html),
-                body: css(useStyles.body),
-                button: css(useStyles.button),
+                container: aphroditeCss(useStyles.container),
+                button: aphroditeCss(useStyles.button),
             }} />
         ))
     );
+
+    return `
+        <html>
+            <head>
+                <style type="text/css">${css.content}</style>
+            </head>
+            <body>${html}</body>
+        </html>
+    `;
 };

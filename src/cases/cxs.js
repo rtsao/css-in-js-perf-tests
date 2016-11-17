@@ -6,15 +6,13 @@ import { styles } from '../styles';
 
 export const cxsCase = () => {
     const classNames = {
-        html: cxs(styles.html),
-        body: cxs(styles.body),
+        container: cxs(styles.container),
         button: cxs(styles.button),
     };
 
     const html = renderToString((
         <App classNames={{
-            html: classNames.html,
-            body: classNames.body,
+            container: classNames.container,
             button: classNames.button,
         }} />
     ));
@@ -23,5 +21,12 @@ export const cxsCase = () => {
 
     cxs.reset();
 
-    return { html, css };
+    return `
+        <html>
+            <head>
+                <style type="text/css">${css}</style>
+            </head>
+            <body>${html}</body>
+        </html>
+    `;
 };

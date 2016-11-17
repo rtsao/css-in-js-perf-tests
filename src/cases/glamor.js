@@ -7,18 +7,25 @@ import { style } from 'glamor';
 
 export const glamorCase = () => {
     const classNames = {
-        html: style(styles.html),
-        body: style(styles.body),
+        container: style(styles.container),
         button: style(styles.button),
     };
 
-    return renderStatic(() =>
+    const { html, css } = renderStatic(() =>
         renderToString((
             <App classNames={{
-                html: classNames.html,
-                body: classNames.body,
+                container: classNames.container,
                 button: classNames.button,
             }} />
         ))
     );
+
+    return `
+        <html>
+            <head>
+                <style type="text/css">${css}</style>
+            </head>
+            <body>${html}</body>
+        </html>
+    `;
 };

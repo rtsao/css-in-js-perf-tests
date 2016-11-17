@@ -8,17 +8,23 @@ import { styles } from '../styles';
 export const jssWithoutPresetCase = () => {
     // jss.setup(preset()); no preset
 
-    const { classes: { html, body, button } } = jss.createStyleSheet(styles).attach();
+    const { classes: { container, button } } = jss.createStyleSheet(styles).attach();
 
     const renderedHtml = renderToString((
         <App classNames={{
-            html,
-            body,
+            container,
             button,
         }} />
     ));
 
     const css = jss.sheets.toString();
 
-    return { html: renderedHtml, css };
+    return `
+        <html>
+            <head>
+                <style type="text/css">${css}</style>
+            </head>
+            <body>${renderedHtml}</body>
+        </html>
+    `;
 };

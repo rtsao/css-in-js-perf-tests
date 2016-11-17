@@ -1,10 +1,6 @@
 export const styles = {
-    html: {
-        width: '100%',
-        height: '100%',
+    container: {
         backgroundColor: 'blue',
-    },
-    body: {
         textAlign: 'center',
         padding: 50,
     },
