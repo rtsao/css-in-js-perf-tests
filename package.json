@@ -20,6 +20,7 @@
   "homepage": "https://github.com/PepijnSenders/css-in-js-perf-tests#readme",
   "dependencies": {
     "aphrodite": "^1.1.0",
+    "beautify-benchmark": "^0.2.4",
     "benchmark": "^2.1.2",
     "glamor": "^2.18.2",
     "jss": "^5.5.6",

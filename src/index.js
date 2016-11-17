@@ -1,4 +1,5 @@
 import { Suite } from 'benchmark';
+import beautifyBenchmark from 'beautify-benchmark';
 import { aphroditeCase, jssCase, glamorCase } from './cases';
 
 // console.log(aphroditeCase(), jssCase(), glamorCase());
@@ -18,10 +19,11 @@ jssSuite.add('glamor', () => {
 });
 
 jssSuite.on('cycle', (e) => {
-    console.log(e.target);
+    beautifyBenchmark.add(e.target);
 });
 
 jssSuite.on('complete', function() {
+    beautifyBenchmark.log();
     console.log(`Fastest is: ${this.filter('fastest').map('name')}`)
 });
 
