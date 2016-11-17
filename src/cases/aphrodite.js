@@ -4,9 +4,9 @@ import { StyleSheet, css, StyleSheetServer } from 'aphrodite';
 import { App } from '../components/App';
 import { styles } from '../styles';
 
-const useStyles = StyleSheet.create(styles);
-
 export const aphroditeCase = () => {
+    const useStyles = StyleSheet.create(styles);
+
     return StyleSheetServer.renderStatic(() =>
         renderToString((
             <App classNames={{

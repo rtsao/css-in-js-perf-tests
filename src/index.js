@@ -1,10 +1,20 @@
 import { Suite } from 'benchmark';
-import { aphroditeCase } from './cases';
+import { aphroditeCase, jssCase, glamorCase } from './cases';
+
+// console.log(aphroditeCase(), jssCase(), glamorCase());
 
 const jssSuite = new Suite();
 
 jssSuite.add('aphrodite', () => {
     return aphroditeCase();
+});
+
+jssSuite.add('jss', () => {
+    return jssCase();
+});
+
+jssSuite.add('glamor', () => {
+    return glamorCase();
 });
 
 jssSuite.on('cycle', (e) => {
