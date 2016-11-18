@@ -1,4 +1,4 @@
-import jss from 'jss';
+import { create } from 'jss';
 import preset from 'jss-preset-default';
 import React from 'react';
 import { renderToString } from 'react-dom/server';
@@ -7,6 +7,7 @@ import { styles } from '../styles';
 
 export const jssWithoutPresetCase = () => {
     // jss.setup(preset()); no preset
+    const jss = create();
 
     const { classes: { container, button } } = jss.createStyleSheet(styles).attach();
 
