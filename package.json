@@ -8,7 +8,8 @@
     "bench:simple-test": "node lib/simple-test",
     "bench:style-overload-test": "node lib/style-overload-test",
     "bench:classes-overload-test": "node lib/classes-overload-test",
-    "bench": "npm run compile && npm run bench:simple-test && npm run bench:style-overload-test && npm run bench:classes-overload-test"
+    "bench": "npm run compile && npm run bench:simple-test && npm run bench:style-overload-test && npm run bench:classes-overload-test",
+    "bundle": "NODE_ENV=production babel-node src/size-test"
   },
   "repository": {
     "type": "git",
@@ -23,19 +24,21 @@
   "homepage": "https://github.com/PepijnSenders/css-in-js-perf-tests#readme",
   "dependencies": {
     "aphrodite": "^1.1.0",
+    "babel-loader": "^6.2.7",
     "beautify-benchmark": "^0.2.4",
     "benchmark": "^2.1.2",
     "cxs": "^2.1.0",
     "glamor": "^2.18.2",
     "jss": "^5.5.6",
-    "jss-preset-default": "^0.8.0"
+    "jss-preset-default": "^0.8.0",
+    "rimraf": "^2.5.4",
+    "webpack": "^1.13.3"
   },
   "devDependencies": {
     "babel": "^6.5.2",
     "babel-cli": "^6.18.0",
     "babel-core": "^6.18.2",
     "babel-preset-node6": "^11.0.0",
-    "babel-preset-react": "^6.16.0",
-    "rimraf": "^2.5.4"
+    "babel-preset-react": "^6.16.0"
   }
 }
