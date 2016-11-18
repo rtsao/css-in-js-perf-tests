@@ -5,7 +5,7 @@ import { aphroditeCase, jssCase, glamorCase, jssWithoutPresetCase, cxsCase, cxsO
 export const ITERATIONS = process.env.ITERATIONS || 20;
 
 export const run = () => {
-    console.log('Running classes overload test.');
+    console.log('Running styles overload test.');
 
     console.log('aphroditeCase length', aphroditeCase().length);
     console.log('jssCase length', jssCase().length);
