@@ -22,6 +22,7 @@
     "aphrodite": "^1.1.0",
     "beautify-benchmark": "^0.2.4",
     "benchmark": "^2.1.2",
+    "cxs": "^2.1.0",
     "glamor": "^2.18.2",
     "jss": "^5.5.6",
     "jss-preset-default": "^0.8.0",
