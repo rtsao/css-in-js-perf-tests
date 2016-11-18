@@ -5,7 +5,10 @@
   "main": "index.js",
   "scripts": {
     "compile": "rimraf lib/ && babel src/ --out-dir lib",
-    "bench": "npm run compile && NODE_ENV=production node lib"
+    "bench:simple-test": "node lib/simple-test",
+    "bench:style-overload-test": "node lib/style-overload-test",
+    "bench:classes-overload-test": "node lib/classes-overload-test",
+    "bench": "npm run compile && npm run bench:simple-test && npm run bench:style-overload-test && npm run bench:classes-overload-test"
   },
   "repository": {
     "type": "git",

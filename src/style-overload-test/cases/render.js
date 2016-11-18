@@ -13,7 +13,7 @@ export const renderHtml = (classNames) => `
                 `);
             }
 
-            return buttons;
+            return buttons.join('');
         })()}
     </section>
 `;

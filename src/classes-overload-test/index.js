@@ -2,7 +2,7 @@ import { Suite } from 'benchmark';
 import beautifyBenchmark from 'beautify-benchmark';
 import { aphroditeCase, jssCase, glamorCase, jssWithoutPresetCase, cxsCase, cxsOptimizedCase } from './cases';
 
-export const ITERATIONS = 20;
+export const ITERATIONS = process.env.ITERATIONS || 20;
 
 export const run = () => {
     console.log('Running classes overload test.');
@@ -51,3 +51,5 @@ export const run = () => {
 
     return jssSuite.run({ async: true });
 };
+
+run();

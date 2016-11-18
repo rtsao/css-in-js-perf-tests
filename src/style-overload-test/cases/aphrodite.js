@@ -11,7 +11,7 @@ export const aphroditeCase = () => {
             classNames[className] = aphroditeCss(useStyles[className]);
         }
 
-        renderHtml(classNames);
+        return renderHtml(classNames);
     });
 
     StyleSheetTestUtils.clearBufferAndResumeStyleInjection();

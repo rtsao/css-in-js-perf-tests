@@ -49,3 +49,5 @@ export const run = () => {
 
     return jssSuite.run({ async: true });
 };
+
+run();
