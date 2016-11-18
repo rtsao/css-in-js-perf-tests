@@ -1,6 +1,6 @@
 import React from 'react';
 import { renderToString } from 'react-dom/server';
-import { StyleSheet, css as aphroditeCss, StyleSheetServer } from 'aphrodite';
+import { StyleSheet, css as aphroditeCss, StyleSheetServer, StyleSheetTestUtils } from 'aphrodite';
 import { App } from '../components/App';
 import { styles } from '../styles';
 
@@ -15,6 +15,8 @@ export const aphroditeCase = () => {
             }} />
         ))
     );
+
+    StyleSheetTestUtils.clearBufferAndResumeStyleInjection();
 
     return `
         <html>

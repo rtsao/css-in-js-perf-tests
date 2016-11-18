@@ -6,7 +6,6 @@ import { App } from '../components/App';
 import { styles } from '../styles';
 
 export const jssWithoutPresetCase = () => {
-    // jss.setup(preset()); no preset
     const jss = create();
 
     const { classes: { container, button } } = jss.createStyleSheet(styles).attach();
