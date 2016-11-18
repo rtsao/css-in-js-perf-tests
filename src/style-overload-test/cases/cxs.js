@@ -1,8 +1,8 @@
-import cxs from 'cxs/optimized';
-import { generateStyles } from '../styles';
+import cxs from 'cxs';
 import { renderHtml } from './render';
+import { generateStyles } from '../styles';
 
-export const cxsOptimizedCase = () => {
+export const cxsCase = () => {
     const styles = generateStyles();
 
     const classNames = {};

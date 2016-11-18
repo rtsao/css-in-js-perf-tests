@@ -1,6 +1,6 @@
 import cxs from 'cxs/optimized';
-import { generateStyles } from '../styles';
 import { renderHtml } from './render';
+import { generateStyles } from '../styles';
 
 export const cxsOptimizedCase = () => {
     const styles = generateStyles();

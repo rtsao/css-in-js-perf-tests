@@ -1,8 +1,6 @@
-import React from 'react';
-import { renderToString } from 'react-dom/server';
 import { StyleSheet, css as aphroditeCss, StyleSheetServer, StyleSheetTestUtils } from 'aphrodite';
-import { App } from '../components/App';
 import { generateStyles } from '../styles';
+import { renderHtml } from './render';
 
 export const aphroditeCase = () => {
     const useStyles = StyleSheet.create(generateStyles());
@@ -15,9 +13,7 @@ export const aphroditeCase = () => {
             classNames[className] = aphroditeCss(useStyles[className]);
         }
 
-        renderToString((
-            <App classNames={classNames} />
-        ))
+        return renderHtml(classNames);
     });
 
     StyleSheetTestUtils.clearBufferAndResumeStyleInjection();

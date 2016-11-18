@@ -1,6 +1,6 @@
 import { Suite } from 'benchmark';
 import beautifyBenchmark from 'beautify-benchmark';
-import { aphroditeCase, jssCase, glamorCase, jssWithoutPresetCase, cxsCase, cxsOptimzedCase } from './cases';
+import { aphroditeCase, jssCase, glamorCase, jssWithoutPresetCase, cxsCase, cxsOptimizedCase } from './cases';
 
 export const run = () => {
     console.log('Running simple test.');
@@ -10,7 +10,7 @@ export const run = () => {
     console.log('jssWithoutPresetCase length', jssWithoutPresetCase().length);
     console.log('glamorCase length', glamorCase().length);
     console.log('cxsCase length', cxsCase().length);
-    console.log('cxsOptimzedCase length', cxsCase().length);
+    console.log('cxsOptimizedCase length', cxsOptimizedCase().length);
 
     const jssSuite = new Suite();
 
@@ -44,7 +44,7 @@ export const run = () => {
 
     jssSuite.on('complete', function() {
         beautifyBenchmark.log();
-        console.log(`Fastest is: ${this.filter('fastest').map('name')}`)
+        console.log(`Fastest is: ${this.filter('fastest').map('name')}\n`);
     });
 
     return jssSuite.run({ async: true });

@@ -1,6 +1,4 @@
-import React from 'react';
-import { renderToString } from 'react-dom/server';
-import { App } from '../components/App';
+import { renderHtml } from './render';
 import { styles } from '../styles';
 import { renderStatic } from 'glamor/server';
 import { style, flush } from 'glamor';
@@ -12,12 +10,10 @@ export const glamorCase = () => {
     };
 
     const { html, css } = renderStatic(() =>
-        renderToString((
-            <App classNames={{
-                container: classNames.container,
-                button: classNames.button,
-            }} />
-        ))
+        renderHtml({
+            container: classNames.container,
+            button: classNames.button,
+        })
     );
 
     flush();

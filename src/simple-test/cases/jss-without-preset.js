@@ -1,8 +1,6 @@
 import { create } from 'jss';
 import preset from 'jss-preset-default';
-import React from 'react';
-import { renderToString } from 'react-dom/server';
-import { App } from '../components/App';
+import { renderHtml } from './render';
 import { styles } from '../styles';
 
 export const jssWithoutPresetCase = () => {
@@ -10,12 +8,10 @@ export const jssWithoutPresetCase = () => {
 
     const { classes: { container, button } } = jss.createStyleSheet(styles).attach();
 
-    const renderedHtml = renderToString((
-        <App classNames={{
-            container,
-            button,
-        }} />
-    ));
+    const renderedHtml = renderHtml({
+        container,
+        button,
+    });
 
     const css = jss.sheets.toString();
 

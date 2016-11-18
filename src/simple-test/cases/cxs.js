@@ -1,7 +1,5 @@
-import React from 'react';
-import { renderToString } from 'react-dom/server';
 import cxs from 'cxs';
-import { App } from '../components/App';
+import { renderHtml } from './render';
 import { styles } from '../styles';
 
 export const cxsCase = () => {
@@ -10,12 +8,10 @@ export const cxsCase = () => {
         button: cxs(styles.button),
     };
 
-    const html = renderToString((
-        <App classNames={{
-            container: classNames.container,
-            button: classNames.button,
-        }} />
-    ));
+    const html = renderHtml({
+        container: classNames.container,
+        button: classNames.button,
+    });
 
     const { css } = cxs;
 

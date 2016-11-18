@@ -8,7 +8,7 @@ export const jssWithoutPresetCase = () => {
 
     const { classes } = jss.createStyleSheet(generateStyles()).attach();
 
-    const html = renderHtml(classes);
+    const renderedHtml = renderHtml(classes);
 
     const css = jss.sheets.toString();
 
@@ -17,7 +17,7 @@ export const jssWithoutPresetCase = () => {
             <head>
                 <style type="text/css">${css}</style>
             </head>
-            <body>${html}</body>
+            <body>${renderedHtml}</body>
         </html>
     `;
 };

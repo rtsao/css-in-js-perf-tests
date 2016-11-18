@@ -1,8 +1,6 @@
-import React from 'react';
-import { renderToString } from 'react-dom/server';
 import cxs from 'cxs';
-import { App } from '../components/App';
 import { generateStyles } from '../styles';
+import { renderHtml } from './render';
 
 export const cxsCase = () => {
     const styles = generateStyles();
@@ -12,9 +10,7 @@ export const cxsCase = () => {
         classNames[className] = cxs(styles[className]);
     }
 
-    const html = renderToString((
-        <App classNames={classNames} />
-    ));
+    const html = renderHtml(classNames);
 
     const { css } = cxs;
 
