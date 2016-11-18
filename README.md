@@ -5,11 +5,11 @@ Testing a couple of CSS in JS libraries, check [the source folder](./src/cases) 
 ```
 5 tests completed.
 
-aphrodite          x  3,178 ops/sec ±13.32% (43 runs sampled)
-jss                x    107 ops/sec ±67.27% (8 runs sampled)
-jss-without-preset x  71.44 ops/sec ±7.87% (45 runs sampled)
-glamor             x 11,968 ops/sec ±9.31% (50 runs sampled)
-cxs                x  7,774 ops/sec ±9.49% (56 runs sampled)
+aphrodite          x  6,125 ops/sec ±14.66% (73 runs sampled)
+jss                x  8,194 ops/sec ±12.00% (63 runs sampled)
+jss-without-preset x 13,319 ops/sec ±5.68% (68 runs sampled)
+glamor             x 16,054 ops/sec ±7.13% (72 runs sampled)
+cxs                x  9,423 ops/sec ±8.18% (70 runs sampled)
 
 Fastest is: glamor
 ```
