@@ -5,8 +5,6 @@ import { renderHtml } from './render';
 export const aphroditeCase = () => {
     const useStyles = StyleSheet.create(generateStyles());
 
-
-
     const { html, css } = StyleSheetServer.renderStatic(() => {
         const classNames = {};
         for (let className in useStyles) {
