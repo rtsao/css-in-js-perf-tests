@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "compile": "babel src/ --out-dir lib",
+    "compile": "rimraf lib/ && babel src/ --out-dir lib",
     "bench": "npm run compile && NODE_ENV=production node lib"
   },
   "repository": {
@@ -34,6 +34,7 @@
     "babel-cli": "^6.18.0",
     "babel-core": "^6.18.2",
     "babel-preset-node6": "^11.0.0",
-    "babel-preset-react": "^6.16.0"
+    "babel-preset-react": "^6.16.0",
+    "rimraf": "^2.5.4"
   }
 }
