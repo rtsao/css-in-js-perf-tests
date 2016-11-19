@@ -24,6 +24,22 @@ const testBundle = (name) => new Promise((resolve, reject) => {
             path: path.join(__dirname, 'dist'),
             filename: `${name}.js`
         },
+        plugins: [
+            new webpack.optimize.UglifyJsPlugin({
+                sourceMap: false,
+                mangle: {
+                    screw_ie8: true,
+                },
+                output: {
+                    screw_ie8: true,
+                    comments: false,
+                },
+                compress: {
+                    screw_ie8: true,
+                    warnings: false,
+                },
+            }),
+        ],
     });
 
     compiler.run((err) => {
@@ -52,5 +68,6 @@ Promise.all([
         }
     });
 }).catch((err) => {
+    console.error(err);
     throw err;
 });

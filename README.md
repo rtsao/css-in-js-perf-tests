@@ -79,12 +79,12 @@ Fastest is: jss-without-preset,glamor
 ### Bundle sizes
 
 ```
-Size cxs 25.912KB
-Size cxs-optimized 31.2KB
-Size jss-without-preset 68.885KB
-Size jss 103.274KB
-Size aphrodite 66.562KB
-Size glamor 92.209KB
+Size cxs 9.766KB
+Size cxs-optimized 12.668KB
+Size jss-without-preset 24.183KB
+Size jss 37.04KB
+Size aphrodite 18.919KB
+Size glamor 35.436KB
 ```
 
 <p align="center">
