@@ -1,13 +1,13 @@
-import { renderHtml } from './render';
-import { generateStyles } from '../styles';
 import { renderStatic } from 'glamor/server';
 import { style, flush } from 'glamor';
+import { renderHtml } from './render';
+import { generateStyles } from '../styles';
 
 export const glamorCase = () => {
     const styles = generateStyles();
 
     const classNames = {};
-    for (let className in styles) {
+    for (const className in styles) {
         classNames[className] = style(styles[className]);
     }
 

@@ -9,7 +9,7 @@ export const aphroditeCase = () => {
         renderHtml({
             container: aphroditeCss(useStyles.container),
             button: aphroditeCss(useStyles.button),
-        })
+        }),
     );
 
     StyleSheetTestUtils.clearBufferAndResumeStyleInjection();

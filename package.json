@@ -1,27 +1,27 @@
 {
   "name": "css-in-js-perf-tests",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Performance tests for CSS-in-js libraries",
   "scripts": {
     "compile": "rimraf lib/ && babel src/ --out-dir lib",
     "bench:simple-test": "node lib/simple-test",
     "bench:style-overload-test": "node lib/style-overload-test",
     "bench:classes-overload-test": "node lib/classes-overload-test",
     "bench": "npm run compile && npm run bench:simple-test && npm run bench:style-overload-test && npm run bench:classes-overload-test",
-    "bundle": "NODE_ENV=production babel-node src/size-test"
+    "bundle": "babel-node src/size-test",
+    "lint": "eslint src/"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/PepijnSenders/css-in-js-perf-tests.git"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "Pepijn Senders <ps@hellofresh.com>",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/PepijnSenders/css-in-js-perf-tests/issues"
   },
-  "homepage": "https://github.com/PepijnSenders/css-in-js-perf-tests#readme",
+  "homepage": "https://github.com/PepijnSenders/css-in-js-perf-tests",
   "dependencies": {
     "aphrodite": "^1.1.0",
     "babel-loader": "^6.2.7",
@@ -38,7 +38,13 @@
     "babel": "^6.5.2",
     "babel-cli": "^6.18.0",
     "babel-core": "^6.18.2",
+    "babel-eslint": "^7.1.1",
     "babel-preset-node6": "^11.0.0",
-    "babel-preset-react": "^6.16.0"
+    "babel-preset-react": "^6.16.0",
+    "eslint": "^3.10.2",
+    "eslint-config-airbnb": "^13.0.0",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-jsx-a11y": "^2.2.3",
+    "eslint-plugin-react": "^6.7.1"
   }
 }

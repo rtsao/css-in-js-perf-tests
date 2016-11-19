@@ -7,38 +7,21 @@ export const ITERATIONS = process.env.ITERATIONS || 20;
 export const run = () => {
     console.log('Running styles overload test.');
 
-    console.log('aphroditeCase length', aphroditeCase().length);
-    console.log('jssCase length', jssCase().length);
-    console.log('jssWithoutPresetCase length', jssWithoutPresetCase().length);
-    console.log('glamorCase length', glamorCase().length);
-    console.log('cxsCase length', cxsCase().length);
-    console.log('cxsOptimizedCase length', cxsOptimizedCase().length);
+    console.log('aphrodite length', aphroditeCase().length);
+    console.log('jss length', jssCase().length);
+    console.log('jss-without-preset length', jssWithoutPresetCase().length);
+    console.log('glamor length', glamorCase().length);
+    console.log('cxs length', cxsCase().length);
+    console.log('cxs-optimized length', cxsOptimizedCase().length);
 
     const jssSuite = new Suite();
 
-    jssSuite.add('aphrodite', () => {
-        return aphroditeCase();
-    });
-
-    jssSuite.add('jss', () => {
-        return jssCase();
-    });
-
-    jssSuite.add('jss-without-preset', () => {
-        return jssWithoutPresetCase();
-    });
-
-    jssSuite.add('glamor', () => {
-        return glamorCase();
-    });
-
-    jssSuite.add('cxs', () => {
-        return cxsCase();
-    });
-
-    jssSuite.add('cxsOptimizedCase', () => {
-        return cxsOptimizedCase();
-    });
+    jssSuite.add('aphrodite', () => aphroditeCase());
+    jssSuite.add('jss', () => jssCase());
+    jssSuite.add('jss-without-preset', () => jssWithoutPresetCase());
+    jssSuite.add('glamor', () => glamorCase());
+    jssSuite.add('cxs', () => cxsCase());
+    jssSuite.add('cxs-optimized', () => cxsOptimizedCase());
 
     jssSuite.on('cycle', (e) => {
         beautifyBenchmark.add(e.target);

@@ -7,7 +7,7 @@ export const aphroditeCase = () => {
 
     const { html, css } = StyleSheetServer.renderStatic(() => {
         const classNames = {};
-        for (let className in useStyles) {
+        for (const className in useStyles) {
             classNames[className] = aphroditeCss(useStyles[className]);
         }
 
