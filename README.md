@@ -72,3 +72,9 @@ Size jss 103.274KB
 Size aphrodite 66.562KB
 Size glamor 92.209KB
 ```
+
+<p align="center">
+  <a href="https://hellofresh.com">
+    <img width="120" src="https://www.hellofresh.de/images/hellofresh/press/HelloFresh_Logo.png">
+  </a>
+</p>
