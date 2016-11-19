@@ -1,0 +1,19 @@
+{
+    "ecmaVersion": 2017,
+    "extends": "eslint-config-airbnb",
+    "env": {
+        "node": true,
+        "mocha": true,
+    },
+    "parser": "babel-eslint",
+    "rules": {
+        "indent": [
+            2,
+            4,
+            {
+                "SwitchCase": 1
+            }
+        ],
+        "import/prefer-default-export": 1
+    }
+}

@@ -26,11 +26,13 @@ const testBundle = (name) => new Promise((resolve, reject) => {
         },
     });
 
-    compiler.run((err, stats) => {
+    compiler.run((err) => {
         if (err) {
             reject(err);
         } else {
-            console.log(`Size ${name}`, fs.statSync(path.join(__dirname, 'dist', `${name}.js`)).size / 1000.0 + 'KB');
+            console.log(`Size ${name}`, (
+                fs.statSync(path.join(__dirname, 'dist', `${name}.js`)).size / 1000.0
+            ) + 'KB');
             resolve();
         }
     });

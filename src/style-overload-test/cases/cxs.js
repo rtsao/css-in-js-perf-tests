@@ -6,7 +6,7 @@ export const cxsCase = () => {
     const styles = generateStyles();
 
     const classNames = {};
-    for (let className in styles) {
+    for (const className in styles) {
         classNames[className] = cxs(styles[className]);
     }
 

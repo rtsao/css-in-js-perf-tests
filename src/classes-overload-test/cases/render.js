@@ -1,6 +1,6 @@
 import { ITERATIONS } from '..';
 
-export const renderHtml = (classNames) => `
+export const renderHtml = classNames => `
     <section class=${classNames.container}>
         ${(() => {
             const buttons = [];

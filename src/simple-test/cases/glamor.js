@@ -1,7 +1,7 @@
-import { renderHtml } from './render';
-import { styles } from '../styles';
 import { renderStatic } from 'glamor/server';
 import { style, flush } from 'glamor';
+import { renderHtml } from './render';
+import { styles } from '../styles';
 
 export const glamorCase = () => {
     const classNames = {
