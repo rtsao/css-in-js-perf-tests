@@ -1,9 +1,11 @@
 import { create } from 'jss';
+import camelCase from 'jss-camel-case';
 import { renderHtml } from './render';
 import { generateStyles } from '../styles';
 
 export const jssWithoutPresetCase = () => {
     const jss = create();
+    jss.use(camelCase());
 
     const { classes } = jss.createStyleSheet(generateStyles()).attach();
 
