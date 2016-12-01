@@ -1,17 +1,14 @@
 import { StyleSheet, css as aphroditeCss, StyleSheetServer, StyleSheetTestUtils } from 'aphrodite';
-import { renderHtml } from './render';
-import { generateStyles } from '../styles';
+import { renderHtml } from '../render';
+import { stylesheet, buttonClassNames } from '../styles';
 
 export const aphroditeCase = () => {
-    const useStyles = StyleSheet.create(generateStyles());
+    const useStyles = StyleSheet.create(stylesheet);
+
+    const getButtonClassName = i => aphroditeCss(useStyles[buttonClassNames[i]]);
 
     const { html, css } = StyleSheetServer.renderStatic(() => {
-        const classNames = {};
-        for (const className in useStyles) {
-            classNames[className] = aphroditeCss(useStyles[className]);
-        }
-
-        return renderHtml(classNames);
+        return renderHtml(aphroditeCss(useStyles.container), getButtonClassName);
     });
 
     StyleSheetTestUtils.clearBufferAndResumeStyleInjection();

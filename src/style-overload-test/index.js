@@ -2,8 +2,6 @@ import { Suite } from 'benchmark';
 import beautifyBenchmark from 'beautify-benchmark';
 import { aphroditeCase, jssCase, glamorCase, jssWithoutPresetCase, cxsCase, cxsOptimizedCase } from './cases';
 
-export const ITERATIONS = process.env.ITERATIONS || 20;
-
 export const run = () => {
     console.log('Running styles overload test.');
 

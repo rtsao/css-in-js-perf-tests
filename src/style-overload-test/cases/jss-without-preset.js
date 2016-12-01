@@ -1,16 +1,17 @@
 import { create } from 'jss';
 import camelCase from 'jss-camel-case';
-import { renderHtml } from './render';
-import { generateStyles } from '../styles';
+import { renderHtml } from '../render';
+import { stylesheet, buttonClassNames } from '../styles';
 
 export const jssWithoutPresetCase = () => {
     const jss = create();
     jss.use(camelCase());
 
-    const { classes } = jss.createStyleSheet(generateStyles()).attach();
+    const { classes } = jss.createStyleSheet(stylesheet).attach();
 
-    const renderedHtml = renderHtml(classes);
+    const getButtonClassName = i => classes[buttonClassNames[i]];
 
+    const html = renderHtml(classes.container, getButtonClassName);
     const css = jss.sheets.toString();
 
     return `
@@ -18,7 +19,7 @@ export const jssWithoutPresetCase = () => {
             <head>
                 <style type="text/css">${css}</style>
             </head>
-            <body>${renderedHtml}</body>
+            <body>${html}</body>
         </html>
     `;
 };
