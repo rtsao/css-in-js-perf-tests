@@ -33,6 +33,9 @@
     "jss-camel-case": "^2.0.2",
     "jss-preset-default": "^0.8.0",
     "rimraf": "^2.5.4",
+    "styletron-client": "^2.1.1",
+    "styletron-server": "^2.1.1",
+    "styletron-utils": "^2.1.0",
     "webpack": "^1.13.3"
   },
   "devDependencies": {
