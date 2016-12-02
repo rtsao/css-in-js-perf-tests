@@ -1,17 +1,21 @@
-import { ITERATIONS } from '.';
+import { ITERATIONS } from './iterations';
 
-export const generateStyles = () => {
-    const styles = {
-        container: {
-            backgroundColor: 'red',
-        },
-    };
-
-    for (let i = 0; i < ITERATIONS; i++) {
-        styles[`button-${i}`] = {
-            backgroundColor: 'blue',
-        };
-    }
-
-    return styles;
+export const containerStyle = {
+    backgroundColor: 'red',
 };
+
+export const buttonStyles = Array(ITERATIONS).fill().map(_ => ({
+    backgroundColor: 'blue',
+}));
+
+export const buttonClassNames = buttonStyles.map((_, i) =>
+    `button-${i}`
+);
+
+let stylesheet = {
+    container: containerStyle
+};
+for (let i = 0; i < buttonClassNames.length; i++) {
+    stylesheet[buttonClassNames[i]] = buttonStyles[i];
+}
+export { stylesheet };

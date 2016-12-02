@@ -1,16 +1,12 @@
 import cxs from 'cxs/optimized';
-import { renderHtml } from './render';
-import { generateStyles } from '../styles';
+import { renderHtml } from '../render';
+import { containerStyle, buttonStyles } from '../styles';
 
 export const cxsOptimizedCase = () => {
-    const styles = generateStyles();
 
-    const classNames = {};
-    for (const className in styles) {
-        classNames[className] = cxs(styles[className]);
-    }
+    const getButtonClassName = i => cxs(buttonStyles[i]);
 
-    const html = renderHtml(classNames);
+    const html = renderHtml(cxs(containerStyle), getButtonClassName);
 
     const { css } = cxs;
 
