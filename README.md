@@ -14,20 +14,21 @@ The first test is just a simple render test, generate 2 class names, one for a c
 
 ```
 Running simple test.
+
 aphrodite length 470
 jss length 447
-jss-without-preset length 439
+jss-without-preset length 443
 glamor length 422
 cxs length 400
 cxs-optimized length 445
   6 tests completed.
 
-  aphrodite          x  8,943 ops/sec ±14.55% (68 runs sampled)
-  jss                x 11,697 ops/sec ±27.81% (55 runs sampled)
-  jss-without-preset x 46,684 ops/sec ±7.89% (62 runs sampled)
-  glamor             x  5,042 ops/sec ±14.27% (47 runs sampled)
-  cxs                x 19,122 ops/sec ±10.24% (69 runs sampled)
-  cxs-optimized      x 12,843 ops/sec ±10.52% (69 runs sampled)
+  aphrodite          x 11,098 ops/sec ±6.56% (72 runs sampled)
+  jss                x 23,644 ops/sec ±3.63% (74 runs sampled)
+  jss-without-preset x 35,984 ops/sec ±6.79% (74 runs sampled)
+  glamor             x  5,846 ops/sec ±16.43% (46 runs sampled)
+  cxs                x 22,370 ops/sec ±5.48% (70 runs sampled)
+  cxs-optimized      x 14,466 ops/sec ±13.06% (70 runs sampled)
 
 Fastest is: jss-without-preset
 ```
@@ -36,20 +37,21 @@ The second test overloads on styles, so it adds `n (ITERATIONS)` amount of diffe
 
 ```
 Running styles overload test.
-aphrodite length 3594
-jss length 3509
-jss-without-preset length 3430
-glamor length 3298
-cxs length 3022
-cxs-optimized length 3063
+
+aphrodite length 2868
+jss length 2783
+jss-without-preset length 2745
+glamor length 2572
+cxs length 2296
+cxs-optimized length 2337
   6 tests completed.
 
-  aphrodite          x   853 ops/sec ±19.51% (54 runs sampled)
-  jss                x 2,200 ops/sec ±10.85% (66 runs sampled)
-  jss-without-preset x 4,301 ops/sec ±17.48% (55 runs sampled)
-  glamor             x   665 ops/sec ±17.53% (56 runs sampled)
-  cxs                x 1,032 ops/sec ±24.12% (43 runs sampled)
-  cxs-optimized      x   743 ops/sec ±21.16% (45 runs sampled)
+  aphrodite          x 1,519 ops/sec ±3.37% (78 runs sampled)
+  jss                x 2,659 ops/sec ±6.22% (66 runs sampled)
+  jss-without-preset x 4,558 ops/sec ±5.93% (62 runs sampled)
+  glamor             x 1,196 ops/sec ±3.94% (78 runs sampled)
+  cxs                x 2,806 ops/sec ±1.96% (80 runs sampled)
+  cxs-optimized      x 2,083 ops/sec ±2.86% (72 runs sampled)
 
 Fastest is: jss-without-preset
 ```
@@ -58,20 +60,21 @@ The third test overloads on class names, so it adds `n (ITERATIONS)` amount of d
 
 ```
 Running classes overload test.
-aphrodite length 3044
-jss length 3085
-jss-without-preset length 3064
-glamor length 1935
-cxs length 1943
-cxs-optimized length 1943
+
+aphrodite length 2318
+jss length 2359
+jss-without-preset length 2359
+glamor length 1209
+cxs length 1217
+cxs-optimized length 1217
   6 tests completed.
 
-  aphrodite          x 1,145 ops/sec ±23.06% (55 runs sampled)
-  jss                x 1,305 ops/sec ±31.53% (39 runs sampled)
-  jss-without-preset x 2,723 ops/sec ±17.48% (38 runs sampled)
-  glamor             x 2,698 ops/sec ±18.00% (48 runs sampled)
-  cxs                x 1,697 ops/sec ±15.10% (46 runs sampled)
-  cxs-optimized      x 2,359 ops/sec ±7.45% (72 runs sampled)
+  aphrodite          x 2,318 ops/sec ±9.89% (78 runs sampled)
+  jss                x 4,258 ops/sec ±5.73% (75 runs sampled)
+  jss-without-preset x 6,871 ops/sec ±1.79% (77 runs sampled)
+  glamor             x 6,771 ops/sec ±11.57% (71 runs sampled)
+  cxs                x 3,541 ops/sec ±10.22% (68 runs sampled)
+  cxs-optimized      x 2,988 ops/sec ±7.57% (72 runs sampled)
 
 Fastest is: jss-without-preset,glamor
 ```
