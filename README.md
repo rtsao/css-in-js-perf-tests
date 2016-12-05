@@ -115,13 +115,13 @@ Fastest is: styletron
 ### Bundle sizes
 
 ```
+Size styletron 2.652KB
 Size cxs 9.766KB
-Size styletron 12KB
-Size jss-without-preset 24.654KB
 Size cxs-optimized 12.668KB
+Size jss-without-preset 24.654KB
 Size jss 37.04KB
-Size glamor 35.436KB
 Size aphrodite 18.919KB
+Size glamor 35.436KB
 ```
 
 <p align="center">
