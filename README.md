@@ -2,6 +2,8 @@
 
 Testing a couple of CSS in JS libraries, check [the source folder](./src/cases) for the different tests.
 
+And read why we did these tests [here](https://engineering.hellofresh.com/the-css-in-js-battle-89c34a7a83ea).
+
 ## Usage
 
 You can clone this repository, `npm install` and run `npm run bench` to run the tests yourself.
