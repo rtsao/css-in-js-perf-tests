@@ -120,6 +120,34 @@ fela length 939
 Fastest is: fela
 ```
 
+The fourth test is about media queries and pseudo-styles.
+
+```
+Running nested test.
+
+aphrodite length 813
+jss length 592
+jss-without-preset length 555
+glamor length 887
+cxs length 676
+cxs-optimized length 727
+styletron length 536
+fela length 540
+
+  8 tests completed.
+
+  aphrodite          x  6,625 ops/sec ±1.25% (77 runs sampled)
+  jss                x  9,050 ops/sec ±3.00% (77 runs sampled)
+  jss-without-preset x 29,840 ops/sec ±1.83% (82 runs sampled)
+  glamor             x  4,481 ops/sec ±2.04% (80 runs sampled)
+  cxs                x  9,874 ops/sec ±3.83% (71 runs sampled)
+  cxs-optimized      x  9,017 ops/sec ±2.32% (76 runs sampled)
+  styletron          x 35,888 ops/sec ±2.09% (80 runs sampled)
+  fela               x 29,628 ops/sec ±1.93% (83 runs sampled)
+
+Fastest is: styletron
+```
+
 ### Bundle sizes
 
 ```
