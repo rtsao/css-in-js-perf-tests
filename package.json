@@ -5,9 +5,10 @@
   "scripts": {
     "compile": "rimraf lib/ && babel src/ --out-dir lib",
     "bench:simple-test": "node lib/simple-test",
+    "bench:nested-test": "node lib/nested-test",
     "bench:style-overload-test": "node lib/style-overload-test",
     "bench:classes-overload-test": "node lib/classes-overload-test",
-    "bench": "npm run compile && npm run bench:simple-test && npm run bench:style-overload-test && npm run bench:classes-overload-test",
+    "bench": "npm run compile && npm run bench:simple-test && npm run bench:nested-test && npm run bench:style-overload-test && npm run bench:classes-overload-test",
     "bundle": "babel-node src/size-test",
     "lint": "eslint src/"
   },
@@ -28,6 +29,7 @@
     "beautify-benchmark": "^0.2.4",
     "benchmark": "^2.1.2",
     "cxs": "^2.1.0",
+    "fela": "^4.1.0",
     "glamor": "^2.18.2",
     "jss": "^5.5.6",
     "jss-camel-case": "^2.0.2",
