@@ -10,6 +10,8 @@ You can clone this repository, `npm install` and run `npm run bench` to run the 
 
 To set the amount of iterations you can set an environment variable called `ITERATIONS`. This will result in: `ITERATIONS=100 npm run bench`.
 
+> Make sure you have Node6 or higher installed as well.
+
 ## Specs
 
 The specs from the machine on which the tests were run:
