@@ -2,38 +2,36 @@ import { Suite } from 'benchmark';
 import beautifyBenchmark from 'beautify-benchmark';
 
 export default (testName, cases) => {
-    var aphrodite, jss, jssWithoutPreset, glamor, cxs, cxsOptimized, styletron, fela;
+    const testCases = {};
 
-	console.log(`Running ${testName} test.\n`);
+    function toKebabCase(n) {
+        return n.replace(/Case$/, '').replace(/([a-z])([A-Z])/g, (match, c1, c2) => `${c1}-${c2.toLowerCase()}`);
+    }
 
-    const jssSuite = new Suite();
+    Object.keys(cases).forEach((k) => {
+        testCases[toKebabCase(k)] = { testCase: cases[k], result: null };
+    });
 
-    jssSuite.add('aphrodite', () => aphrodite = cases.aphroditeCase());
-    jssSuite.add('jss', () => jss = cases.jssCase());
-    jssSuite.add('jss-without-preset', () => jssWithoutPreset = cases.jssWithoutPresetCase());
-    jssSuite.add('glamor', () => glamor = cases.glamorCase());
-    jssSuite.add('cxs', () => cxs = cases.cxsCase());
-    jssSuite.add('cxs-optimized', () => cxsOptimized = cases.cxsOptimizedCase());
-    jssSuite.add('styletron', () => styletron = cases.styletronCase());
-    jssSuite.add('fela', () => fela = cases.felaCase());
+    console.log(`Running ${testName} test.\n`);
 
-    jssSuite.on('cycle', (e) => {
+    const testSuite = new Suite();
+
+    Object.keys(testCases).forEach((k) => {
+        testSuite.add(k, () => { testCases[k].result = testCases[k].testCase(); });
+    });
+
+    testSuite.on('cycle', (e) => {
         beautifyBenchmark.add(e.target);
     });
 
-    jssSuite.on('complete', function() {
-        console.log('aphrodite length', aphrodite.length);
-        console.log('jss length', jss.length);
-        console.log('jss-without-preset length', jssWithoutPreset.length);
-        console.log('glamor length', glamor.length);
-        console.log('cxs length', cxs.length);
-        console.log('cxs-optimized length', cxsOptimized.length);
-        console.log('styletron length', styletron.length);
-        console.log('fela length', fela.length);
+    testSuite.on('complete', function onComplete() {
+        Object.keys(testCases).forEach((k) => {
+            console.log(k + ' length', testCases[k].result.length);
+        });
 
         beautifyBenchmark.log();
         console.log(`Fastest is: ${this.filter('fastest').map('name')}\n`);
     });
 
-    return jssSuite.run({ async: true });
+    return testSuite.run({ async: true });
 };
