@@ -3,7 +3,6 @@ import { renderHtml } from '../render';
 import { containerStyle, buttonStyle } from '../styles';
 
 export const cxsCase = () => {
-
     const html = renderHtml(cxs(containerStyle), cxs(buttonStyle));
 
     const { css } = cxs;

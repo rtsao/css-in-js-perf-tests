@@ -1,16 +1,16 @@
-import { createRenderer } from 'fela';
+import FreeStyle from 'free-style';
 import { renderHtml } from '../render';
 import { containerStyle, buttonStyle } from '../styles';
 
-export const felaCase = () => {
-    const renderer = createRenderer();
+export const freeStyleCase = () => {
+    const Style = FreeStyle.create();
 
     const html = renderHtml(
-        renderer.renderRule(() => containerStyle),
-        renderer.renderRule(() => buttonStyle)
+        Style.registerStyle(containerStyle),
+        Style.registerStyle(buttonStyle)
     );
 
-    const css = renderer.renderToString();
+    const css = Style.getStyles();
 
     return `
         <html>

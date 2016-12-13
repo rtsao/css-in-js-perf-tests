@@ -30,6 +30,7 @@
     "benchmark": "^2.1.2",
     "cxs": "^2.1.0",
     "fela": "^4.1.0",
+    "free-style": "^2.0.0",
     "glamor": "^2.18.2",
     "jss": "^5.5.6",
     "jss-camel-case": "^2.0.2",
