@@ -1,7 +1,7 @@
 {
   "name": "css-in-js-perf-tests",
   "version": "1.0.0",
-  "description": "Performance tests for CSS-in-js libraries",
+  "description": "Performance tests for CSS-in-JS libraries",
   "scripts": {
     "compile": "rimraf lib/ && babel src/ --out-dir lib",
     "bench:simple-test": "node lib/simple-test",
@@ -10,6 +10,11 @@
     "bench:classes-overload-test": "node lib/classes-overload-test",
     "bench": "npm run compile && npm run bench:simple-test && npm run bench:nested-test && npm run bench:style-overload-test && npm run bench:classes-overload-test",
     "bundle": "babel-node src/size-test",
+    "view:simple-test": "node lib/simple-test/view.js",
+    "view:nested-test": "node lib/nested-test/view.js",
+    "view:style-overload-test": "node lib/style-overload-test/view.js",
+    "view:classes-overload-test": "node lib/classes-overload-test/view.js",
+    "view": "rimraf output/ && npm run view:simple-test && npm run view:nested-test && npm run view:style-overload-test && npm run view:classes-overload-test",
     "lint": "eslint src/"
   },
   "repository": {

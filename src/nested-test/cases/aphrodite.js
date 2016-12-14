@@ -1,25 +1,19 @@
 import { StyleSheet, css as aphroditeCss, StyleSheetServer, StyleSheetTestUtils } from 'aphrodite';
-import { renderHtml } from '../render';
-import { stylesheet } from '../styles';
+import { createStylesheet } from '../styles';
+import { renderHtml, renderBody } from '../render';
 
-export const aphroditeCase = () => {
-    const useStyles = StyleSheet.create(stylesheet);
+export const aphroditeCase = (caseName) => {
+    const useStyles = StyleSheet.create(createStylesheet());
 
     const { html, css } = StyleSheetServer.renderStatic(() =>
-        renderHtml(
+        renderBody(
+            caseName,
             aphroditeCss(useStyles.container),
-            aphroditeCss(useStyles.button),
+            aphroditeCss(useStyles.button)
         )
     );
 
     StyleSheetTestUtils.clearBufferAndResumeStyleInjection();
 
-    return `
-        <html>
-            <head>
-                <style type="text/css">${css.content}</style>
-            </head>
-            <body>${html}</body>
-        </html>
-    `;
+    return renderHtml(css.content, html);
 };

@@ -1,23 +1,18 @@
 import FreeStyle from 'free-style';
-import { renderHtml } from '../render';
-import { containerStyle, buttonStyle } from '../styles';
+import { createContainerStyle, createButtonStyle } from '../styles';
+import { renderHtml, renderBody } from '../render';
 
-export const freeStyleCase = () => {
+export const freeStyleCase = (caseName) => {
     const Style = FreeStyle.create();
 
-    const html = renderHtml(
-        Style.registerStyle(containerStyle),
-        Style.registerStyle(buttonStyle)
+    const options = { prefixPseudo: true };
+    const html = renderBody(
+        caseName,
+        Style.registerStyle(createContainerStyle(options)),
+        Style.registerStyle(createButtonStyle(options))
     );
 
     const css = Style.getStyles();
 
-    return `
-        <html>
-            <head>
-                <style type="text/css">${css}</style>
-            </head>
-            <body>${html}</body>
-        </html>
-    `;
+    return renderHtml(css, html);
 };

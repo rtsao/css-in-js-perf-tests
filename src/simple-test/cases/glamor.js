@@ -1,22 +1,14 @@
 import { renderStatic } from 'glamor/server';
 import { style, flush } from 'glamor';
-import { renderHtml } from '../render';
 import { containerStyle, buttonStyle } from '../styles';
+import { renderHtml, renderBody } from '../render';
 
-export const glamorCase = () => {
-
+export const glamorCase = (caseName) => {
     const { html, css } = renderStatic(() =>
-        renderHtml(style(containerStyle), style(buttonStyle))
+        renderBody(caseName, style(containerStyle), style(buttonStyle))
     );
 
     flush();
 
-    return `
-        <html>
-            <head>
-                <style type="text/css">${css}</style>
-            </head>
-            <body>${html}</body>
-        </html>
-    `;
+    return renderHtml(css, html);
 };

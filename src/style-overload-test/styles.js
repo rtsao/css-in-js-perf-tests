@@ -1,20 +1,20 @@
 import { ITERATIONS } from './iterations';
 
 export const containerStyle = {
-    backgroundColor: 'red',
+    backgroundColor: 'rebeccapurple',
 };
 
 export const buttonStyles = Array(ITERATIONS).fill().map((_, i) => ({
-    backgroundColor: 'blue',
-    paddingLeft: i
+    backgroundColor: 'turquoise',
+    paddingLeft: i + 'px',
 }));
 
 export const buttonClassNames = buttonStyles.map((_, i) =>
     `button-${i}`
 );
 
-let stylesheet = {
-    container: containerStyle
+const stylesheet = {
+    container: containerStyle,
 };
 for (let i = 0; i < buttonClassNames.length; i++) {
     stylesheet[buttonClassNames[i]] = buttonStyles[i];

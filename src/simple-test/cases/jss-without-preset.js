@@ -1,24 +1,17 @@
 import { create } from 'jss';
 import camelCase from 'jss-camel-case';
-import { renderHtml } from '../render';
 import { stylesheet } from '../styles';
+import { renderHtml, renderBody } from '../render';
 
-export const jssWithoutPresetCase = () => {
+export const jssWithoutPresetCase = (caseName) => {
     const jss = create();
     jss.use(camelCase());
 
     const { classes: { container, button } } = jss.createStyleSheet(stylesheet).attach();
 
-    const html = renderHtml(container, button);
+    const html = renderBody(caseName, container, button);
 
     const css = jss.sheets.toString();
 
-    return `
-        <html>
-            <head>
-                <style type="text/css">${css}</style>
-            </head>
-            <body>${html}</body>
-        </html>
-    `;
+    return renderHtml(css, html);
 };

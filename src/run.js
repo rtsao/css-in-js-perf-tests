@@ -1,12 +1,11 @@
+import fs from 'fs';
 import { Suite } from 'benchmark';
 import beautifyBenchmark from 'beautify-benchmark';
 
-export default (testName, cases) => {
-    const testCases = {};
+import { toKebabCase, pad, createOutputDir } from './utilities';
 
-    function toKebabCase(n) {
-        return n.replace(/Case$/, '').replace(/([a-z])([A-Z])/g, (match, c1, c2) => `${c1}-${c2.toLowerCase()}`);
-    }
+export const runTest = (testName, cases) => {
+    const testCases = {};
 
     Object.keys(cases).forEach((k) => {
         testCases[toKebabCase(k)] = { testCase: cases[k], result: null };
@@ -16,8 +15,8 @@ export default (testName, cases) => {
 
     const testSuite = new Suite();
 
-    Object.keys(testCases).forEach((k) => {
-        testSuite.add(k, () => { testCases[k].result = testCases[k].testCase(); });
+    Object.keys(testCases).forEach((caseName) => {
+        testSuite.add(caseName, () => { testCases[caseName].result = testCases[caseName].testCase(pad(caseName)); });
     });
 
     testSuite.on('cycle', (e) => {
@@ -25,8 +24,8 @@ export default (testName, cases) => {
     });
 
     testSuite.on('complete', function onComplete() {
-        Object.keys(testCases).forEach((k) => {
-            console.log(k + ' length', testCases[k].result.length);
+        Object.keys(testCases).forEach((caseName) => {
+            console.log(caseName + ' length', testCases[caseName].result.length);
         });
 
         beautifyBenchmark.log();
@@ -34,4 +33,25 @@ export default (testName, cases) => {
     });
 
     return testSuite.run({ async: true });
+};
+
+export const runView = (testName, cases) => {
+    const testCases = {};
+
+    Object.keys(cases).forEach((caseName) => {
+        testCases[toKebabCase(caseName)] = { testCase: cases[caseName], result: null };
+    });
+
+    console.log(`Running view ${testName}.\n`);
+
+    const outputDir = createOutputDir(testName);
+
+    Object.keys(testCases).forEach((caseName) => {
+        const html = testCases[caseName].testCase(pad(caseName));
+        fs.writeFile(`${outputDir}/${caseName}.html`, html, (err) => {
+            if (err) {
+                console.log(err);
+            }
+        });
+    });
 };
