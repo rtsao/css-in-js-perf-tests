@@ -39,6 +39,7 @@
     "glamor": "^2.18.2",
     "jss": "^5.5.6",
     "jss-camel-case": "^2.0.2",
+    "jss-nested": "^2.5.0",
     "jss-preset-default": "^0.8.0",
     "rimraf": "^2.5.4",
     "styletron-client": "^2.1.1",
