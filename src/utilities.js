@@ -4,8 +4,8 @@ export const toKebabCase = n =>
     n.replace(/Case$/, '').replace(/([a-z])([A-Z])/g, (match, c1, c2) => `${c1}-${c2.toLowerCase()}`);
 
 export const pad = (n) => {
-    const titleLength = 25;
-    const p = '===============';
+    const titleLength = 30;
+    const p = '====================';
     const title = `${p} ${n} ${p}`;
     const offset = (title.length - titleLength) / 2;
     return title.substr(offset, titleLength);
