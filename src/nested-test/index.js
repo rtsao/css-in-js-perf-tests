@@ -1,4 +1,5 @@
-import * as cases from './cases';
-import run from '../run';
+import { runTest } from '../run';
 
-run('nested', cases);
+import * as cases from './cases';
+
+runTest('nested', cases);

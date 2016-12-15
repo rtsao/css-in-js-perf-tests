@@ -1,14 +1,14 @@
-# CSS-in-js Performance tests
+# CSS-in-JS Performance Tests
 
-Testing a couple of CSS in JS libraries, check [the source folder](./src/cases) for the different tests.
+Testing a couple of CSS-in-JS libraries, check [the source folder](./src/) for the different tests.
 
-And read why we did these tests [here](https://engineering.hellofresh.com/the-css-in-js-battle-89c34a7a83ea).
+And read why we did these tests in the [CSS-in-JS Battle](https://engineering.hellofresh.com/the-css-in-js-battle-89c34a7a83ea) article.
 
 ## Usage
 
 You can clone this repository, `npm install` and run `npm run bench` to run the tests yourself.
 
-To set the amount of iterations you can set an environment variable called `ITERATIONS`. This will result in: `ITERATIONS=100 npm run bench`.
+To set the amount of iterations (see below) you can set an environment variable called `ITERATIONS`. This will result in: `ITERATIONS=100 npm run bench`.
 
 > Make sure you have Node6 or higher installed as well.
 
@@ -38,7 +38,7 @@ Hardware:
 
 ## Results
 
-The first test is just a simple render test, generate 2 class names, one for a container and one for a button.
+The first test is just a simple render test, generates two classes, one for a container and one for a button.
 
 ```
 Running simple test.
@@ -53,7 +53,6 @@ jss length 447
 jss-without-preset length 443
 styletron length 366
 
-
   aphrodite          x  9,421 ops/sec ±11.15% (61 runs sampled)
   cxs                x 21,834 ops/sec ±9.34% (65 runs sampled)
   cxs-optimized      x 17,377 ops/sec ±3.65% (76 runs sampled)
@@ -67,7 +66,7 @@ styletron length 366
 Fastest is: fela
 ```
 
-The second test overloads on styles, so it adds `n (ITERATIONS)` amount of different styles for the button.
+The second test overloads on styles, so it adds `n (ITERATIONS)` amount of different styles with a common part for the buttons. Show which libraries can detect the common part and isolate it.
 
 ```
 Running styles overload test.
@@ -81,7 +80,6 @@ cxs-optimized length 2337
 styletron length 1370
 fela length 1349
 
-  8 tests completed.
 
   aphrodite          x  1,446 ops/sec ±2.55% (69 runs sampled)
   jss                x  3,160 ops/sec ±2.85% (75 runs sampled)
@@ -95,7 +93,7 @@ fela length 1349
 Fastest is: fela,styletron
 ```
 
-The third test overloads on class names, so it adds `n (ITERATIONS)` amount of different class names with the same styles. This test is interesting to see which library actually merges these styles when they're similar.
+The third test overloads on classes, so it adds `n (ITERATIONS)` amount of different class names with the same styles. This test is interesting to see which library actually merges these styles when they're identical.
 
 ```
 Running classes overload test.
@@ -124,7 +122,7 @@ styletron length 960
 Fastest is: fela
 ```
 
-The fourth test is about media queries and pseudo-styles.
+The fourth test is about media queries and pseudo-styles with nested style objects.
 
 ```
 Running nested test.
@@ -155,6 +153,8 @@ Fastest is: styletron
 
 ### Bundle sizes
 
+Launch with `npm run bundle`.
+
 ```
 Size styletron 2.652KB
 Size cxs 9.766KB
@@ -165,6 +165,68 @@ Size jss 37.04KB
 Size glamor 35.436KB
 Size aphrodite 18.919KB
 ```
+
+### View generated code
+
+Launch with `npm run view`.
+
+Find the generated HTML files with their embeded CSS for each test in the `output` directory.
+
+Some observations:
+
+For all of them, class name is stable between generations if same content. Unless said otherwise, the generated CSS is minimized.
+
+#### aphrodite
+
+(simple) Removes a non-used class. Generates class names like `original-name_1fm03kj`. Adds `!important` to each CSS property, but this can be deactivated.
+(style overload) Different classes with a common style are kept as is.
+(classes overload) Doesn't detect identical classes that remain duplicate.
+(nested) Manages pseudo-classes and media queries.
+
+#### cxs and cxs-optimized
+
+(simple) Doesn't remove a non-used class. Generates class names like `cxs-4211614354`.
+(style overload) Different classes with a common style are kept as is. Minimized CSS.
+(classes overload) Detects identical classes that are merged.
+(nested) Manages pseudo-classes and media queries.
+
+cxs-optimized can generate some specialized classes (with names like `cxs-display-block` or `cxs-text-align-center`) removed from the classes using these styles and added to elements using them. Seems limited to properties with a small number of possible values. Named colors are not deduplicated.
+
+#### fela
+
+(simple) Removes a non-used class. Generates class names like `a`, `b`, `c`. Each class has one property only, they are merged at element level.
+(style overload) Styles common to several classes go to classes added to all corresponding elements.
+(classes overload) Detects identical classes that are merged.
+(nested) Manages pseudo-classes and media queries.
+
+#### free-style
+
+(simple) Doesn't remove a non-used class. Generates class names like `f1lzwo7y`.
+(style overload) Different classes with a common style are kept as is.
+(classes overload) Detects identical classes that are merged.
+(nested) Manages pseudo-classes and media queries.
+
+#### glamor
+
+(simple) Doesn't remove a non-used class. Generates class names like `css-h433f4`. Add selectors like `[data-css-h433f4]`.
+(style overload) Different classes with a common style are kept as is.
+(classes overload) Detects identical classes that are merged.
+(nested) Manages pseudo-classes and media queries. Adds selectors like `css-1u8v7v4[data-simulate-hover]`.
+
+#### jss and jss-without-preset
+
+(simple) Doesn't remove a non-used class. Generates class names like `original-name-3553477605`. CSS is formatted and indented (1 space).
+(style overload) Different classes with a common style are kept as is.
+(classes overload) Doesn't detect identical classes that remain duplicate.
+(nested) Manages pseudo-classes and media queries.
+
+#### styletron
+
+(simple) Doesn't remove a non-used class. Generates class names like `a`, `b`, `c`. Each class has one property only, they are merged at element level (starts with a space).
+(style overload) Styles common to several classes go to classes added to all corresponding elements.
+(classes overload) Detects identical classes that are merged.
+(nested) Manages pseudo-classes and media queries.
+
 
 <p align="center">
   <a href="https://hellofresh.com">

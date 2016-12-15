@@ -1,20 +1,13 @@
 import cxs from 'cxs';
-import { renderHtml } from '../render';
-import { containerStyle, buttonStyle } from '../styles';
+import { createContainerStyle, createButtonStyle } from '../styles';
+import { renderHtml, renderBody } from '../render';
 
-export const cxsCase = () => {
-    const html = renderHtml(cxs(containerStyle), cxs(buttonStyle));
+export const cxsCase = (caseName) => {
+    const html = renderBody(caseName, cxs(createContainerStyle()), cxs(createButtonStyle()));
 
     const { css } = cxs;
 
     cxs.reset();
 
-    return `
-        <html>
-            <head>
-                <style type="text/css">${css}</style>
-            </head>
-            <body>${html}</body>
-        </html>
-    `;
+    return renderHtml(css, html);
 };

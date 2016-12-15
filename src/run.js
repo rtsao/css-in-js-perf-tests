@@ -1,37 +1,76 @@
+import fs from 'fs';
 import { Suite } from 'benchmark';
 import beautifyBenchmark from 'beautify-benchmark';
 
-export default (testName, cases) => {
-    const testCases = {};
+import { toKebabCase, pad, createOutputDir } from './utilities';
 
-    function toKebabCase(n) {
-        return n.replace(/Case$/, '').replace(/([a-z])([A-Z])/g, (match, c1, c2) => `${c1}-${c2.toLowerCase()}`);
-    }
+export const runTest = (testName, cases) => {
+    return new Promise((resolve, reject) => {
+        const testCases = {};
 
-    Object.keys(cases).forEach((k) => {
-        testCases[toKebabCase(k)] = { testCase: cases[k], result: null };
-    });
-
-    console.log(`Running ${testName} test.\n`);
-
-    const testSuite = new Suite();
-
-    Object.keys(testCases).forEach((k) => {
-        testSuite.add(k, () => { testCases[k].result = testCases[k].testCase(); });
-    });
-
-    testSuite.on('cycle', (e) => {
-        beautifyBenchmark.add(e.target);
-    });
-
-    testSuite.on('complete', function onComplete() {
-        Object.keys(testCases).forEach((k) => {
-            console.log(k + ' length', testCases[k].result.length);
+        Object.keys(cases).forEach((k) => {
+            testCases[toKebabCase(k)] = { testCase: cases[k], result: null };
         });
 
-        beautifyBenchmark.log();
-        console.log(`Fastest is: ${this.filter('fastest').map('name')}\n`);
-    });
+        console.log(`Running ${testName} test.\n`);
 
-    return testSuite.run({ async: true });
+        const testSuite = new Suite();
+
+        Object.keys(testCases).forEach((caseName) => {
+            testSuite.add(caseName, () => { testCases[caseName].result = testCases[caseName].testCase(pad(caseName)); });
+        });
+
+        testSuite.on('cycle', (e) => {
+            beautifyBenchmark.add(e.target);
+        });
+
+        testSuite.on('complete', function onComplete() {
+            let smallestSize = Number.MAX_VALUE;
+            let smallest = '?';
+            Object.keys(testCases).forEach((caseName) => {
+                const length = testCases[caseName].result.length;
+                console.log(`${caseName} length`, length);
+                if (smallestSize > length) {
+                    smallestSize = length;
+                    smallest = caseName;
+                }
+            });
+            console.log(`\nSmallest is: ${smallest}`);
+
+            beautifyBenchmark.log();
+            console.log(`Fastest is: ${this.filter('fastest').map('name')}\n`);
+
+            resolve();
+        });
+
+        testSuite.run({ async: true });
+    });
+};
+
+export const runView = (testName, cases) => {
+    return new Promise((resolve, reject) => {
+        const testCases = {};
+
+        Object.keys(cases).forEach((caseName) => {
+            testCases[toKebabCase(caseName)] = { testCase: cases[caseName], result: null };
+        });
+
+        console.log(`Running view ${testName}.\n`);
+
+        const outputDir = createOutputDir(testName.replace(/ /, '-'));
+
+        Object.keys(testCases).forEach((caseName) => {
+            const html = testCases[caseName].testCase(pad(caseName));
+            const path = `${outputDir}/${caseName}.html`;
+            fs.writeFile(path, html, (err) => {
+                if (err) {
+                    console.error(err);
+                    reject(err);
+                } else {
+                    console.log(`Wrote ${path}`);
+                    resolve(path);
+                }
+            });
+        });
+    });
 };

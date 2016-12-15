@@ -1,24 +1,18 @@
 import Styletron from 'styletron-server';
 import { injectStyle } from 'styletron-utils';
-import { renderHtml } from '../render';
-import { containerStyle, buttonStyle } from '../styles';
+import { createContainerStyle, createButtonStyle } from '../styles';
+import { renderHtml, renderBody } from '../render';
 
-export const styletronCase = () => {
+export const styletronCase = (caseName) => {
     const styletron = new Styletron();
 
-    const html = renderHtml(
-        injectStyle(styletron, containerStyle),
-        injectStyle(styletron, buttonStyle)
+    const html = renderBody(
+        caseName,
+        injectStyle(styletron, createContainerStyle()),
+        injectStyle(styletron, createButtonStyle())
     );
 
     const css = styletron.getCss();
 
-    return `
-        <html>
-            <head>
-                <style type="text/css">${css}</style>
-            </head>
-            <body>${html}</body>
-        </html>
-    `;
+    return renderHtml(css, html);
 };

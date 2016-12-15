@@ -1,5 +1,18 @@
-export const renderHtml = (containerClassName, buttonClassName) => `
-    <section class=${containerClassName}>
-        <button class=${buttonClassName}>Click me</button>
-    </section>
+export const renderHtml = (css, body) =>
+`<html>
+    <head>
+        <style type="text/css">
+${css}
+        </style>
+    </head>
+    <body>
+${body}
+    </body>
+</html>
 `;
+
+export const renderBody = (libraryName, containerClassNames, buttonClassNames, notUsedClassNames) =>
+`<section class="${containerClassNames}">
+    <h1>${libraryName}</h1>
+    <button class="${buttonClassNames}">Click me</button>
+</section>`;
