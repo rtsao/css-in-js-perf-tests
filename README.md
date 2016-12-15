@@ -8,7 +8,7 @@ And read why we did these tests in the [CSS-in-JS Battle](https://engineering.he
 
 You can clone this repository, `npm install` and run `npm run bench` to run the tests yourself.
 
-To set the amount of iterations you can set an environment variable called `ITERATIONS`. This will result in: `ITERATIONS=100 npm run bench`.
+To set the amount of iterations (see below) you can set an environment variable called `ITERATIONS`. This will result in: `ITERATIONS=100 npm run bench`.
 
 > Make sure you have Node6 or higher installed as well.
 
@@ -38,7 +38,7 @@ Hardware:
 
 ## Results
 
-The first test is just a simple render test, generate 2 class names, one for a container and one for a button.
+The first test is just a simple render test, generates two classes, one for a container and one for a button.
 
 ```
 Running simple test.
@@ -94,7 +94,7 @@ fela length 1349
 Fastest is: fela,styletron
 ```
 
-The third test overloads on class names, so it adds `n (ITERATIONS)` amount of different class names with the same styles. This test is interesting to see which library actually merges these styles when they're identical.
+The third test overloads on classes, so it adds `n (ITERATIONS)` amount of different class names with the same styles. This test is interesting to see which library actually merges these styles when they're identical.
 
 ```
 Running classes overload test.
@@ -123,7 +123,7 @@ styletron length 960
 Fastest is: fela
 ```
 
-The fourth test is about media queries and pseudo-styles.
+The fourth test is about media queries and pseudo-styles with nested style objects.
 
 ```
 Running nested test.

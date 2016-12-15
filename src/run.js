@@ -25,7 +25,7 @@ export const runTest = (testName, cases) => {
 
     testSuite.on('complete', function onComplete() {
         Object.keys(testCases).forEach((caseName) => {
-            console.log(caseName + ' length', testCases[caseName].result.length);
+            console.log(`${caseName} length`, testCases[caseName].result.length);
         });
 
         beautifyBenchmark.log();
@@ -44,13 +44,16 @@ export const runView = (testName, cases) => {
 
     console.log(`Running view ${testName}.\n`);
 
-    const outputDir = createOutputDir(testName);
+    const outputDir = createOutputDir(testName.replace(/ /, '-'));
 
     Object.keys(testCases).forEach((caseName) => {
         const html = testCases[caseName].testCase(pad(caseName));
-        fs.writeFile(`${outputDir}/${caseName}.html`, html, (err) => {
+        const path = `${outputDir}/${caseName}.html`;
+        fs.writeFile(path, html, (err) => {
             if (err) {
-                console.log(err);
+                console.error(err);
+            } else {
+                console.log(`Wrote ${path}`);
             }
         });
     });
