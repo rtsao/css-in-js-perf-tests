@@ -65,10 +65,10 @@ export const runView = (testName, cases) => {
             fs.writeFile(path, html, (err) => {
                 if (err) {
                     console.error(err);
-                    reject();
+                    reject(err);
                 } else {
                     console.log(`Wrote ${path}`);
-                    resolve();
+                    resolve(path);
                 }
             });
         });
