@@ -11,7 +11,7 @@ ${body}
 </html>
 `;
 
-export const renderBody = (libraryName, containerClassNames, buttonClassNames) =>
+export const renderBody = (libraryName, containerClassNames, buttonClassNames, notUsedClassNames) =>
 `<section class="${containerClassNames}">
     <h1>${libraryName}</h1>
     <button class="${buttonClassNames}">Click me</button>

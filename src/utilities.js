@@ -18,6 +18,8 @@ export const createOutputDir = (testName) => {
     if (!fs.existsSync(OUTPUT)) {
         fs.mkdirSync(OUTPUT);
     }
-    fs.mkdirSync(outputDir);
+    if (!fs.existsSync(outputDir)) {
+        fs.mkdirSync(outputDir);
+    }
     return outputDir;
 };

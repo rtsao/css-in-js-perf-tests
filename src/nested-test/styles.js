@@ -2,6 +2,8 @@ export const createContainerStyle = (options) => {
     // Some libraries like free-style require to write '&:hover', others accept either form, others choke on it...
     const p = options && options.prefixPseudo ? '&' : '';
     return {
+        color: 'yellow',
+        display: 'block',
         backgroundColor: 'blue',
         textAlign: 'center',
         padding: '30px',
@@ -21,6 +23,7 @@ export const createButtonStyle = (options) => {
     const p = options && options.prefixPseudo ? '&' : '';
     return {
         color: 'yellow',
+        display: 'block',
         backgroundColor: 'rebeccapurple',
         fontSize: '30px',
         border: '3px solid yellow',

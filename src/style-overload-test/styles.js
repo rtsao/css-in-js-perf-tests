@@ -6,6 +6,7 @@ export const containerStyle = {
 
 export const buttonStyles = Array(ITERATIONS).fill().map((_, i) => ({
     backgroundColor: 'turquoise',
+    display: 'block',
     paddingLeft: i + 'px',
 }));
 

@@ -6,6 +6,7 @@ export const containerStyle = {
 
 export const buttonStyles = Array(ITERATIONS).fill().map(_ => ({
     backgroundColor: 'turquoise',
+    display: 'block',
 }));
 
 export const buttonClassNames = buttonStyles.map((_, i) =>
