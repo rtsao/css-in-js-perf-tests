@@ -176,9 +176,9 @@ Some observations:
 
 For all of them, class name is stable between generations if same content. Unless said otherwise, the generated CSS is minimized.
 
-#### aphrodite
+#### aphrodite and aphrodite-no-important
 
-(simple) Removes a non-used class. Generates class names like `original-name_1fm03kj`. Adds `!important` to each CSS property, but this can be deactivated.
+(simple) Removes a non-used class. Generates class names like `original-name_1fm03kj`. By default, adds `!important` to each CSS property, *aphrodite-no-important* generates CSS without it.
 (style overload) Different classes with a common style are kept as is.
 (classes overload) Doesn't detect identical classes that remain duplicate.
 (nested) Manages pseudo-classes and media queries.

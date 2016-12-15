@@ -56,6 +56,7 @@ const testBundle = (name) => new Promise((resolve, reject) => {
 
 Promise.all([
     testBundle('aphrodite'),
+    testBundle('aphrodite-no-important'),
     testBundle('cxs'),
     testBundle('cxs-optimized'),
     testBundle('fela'),
