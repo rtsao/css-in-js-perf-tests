@@ -53,7 +53,6 @@ jss length 447
 jss-without-preset length 443
 styletron length 366
 
-
   aphrodite          x  9,421 ops/sec ±11.15% (61 runs sampled)
   cxs                x 21,834 ops/sec ±9.34% (65 runs sampled)
   cxs-optimized      x 17,377 ops/sec ±3.65% (76 runs sampled)
