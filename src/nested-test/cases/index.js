@@ -1,5 +1,6 @@
 export * from './aphrodite';
 export * from './aphrodite-no-important';
+export * from './cssobj';
 export * from './cxs';
 export * from './cxs-optimized';
 export * from './fela';
