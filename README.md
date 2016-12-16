@@ -156,6 +156,7 @@ Fastest is: styletron
 Launch with `npm run bundle`.
 
 ```
+Size j2c 4.624KB
 Size cssobj 10.375KB
 Size cssobj-server 7.181KB
 Size free-style 8.3KB
@@ -223,6 +224,13 @@ cxs-optimized can generate some specialized classes (with names like `cxs-displa
 (style overload) Different classes with a common style are kept as is.
 (classes overload) Detects identical classes that are merged.
 (nested) Manages pseudo-classes and media queries. Adds selectors like `css-1u8v7v4[data-simulate-hover]`.
+
+#### j2c
+
+(simple) Doesn't remove a non-used class. Generates class names like `original-name_j2c_5atjj2_120pllj_lsbclb_1lwh5gt_0`. Class names change between generations. CSS is minified with newlines.
+(style overload) Different classes with a common style are kept as is.
+(classes overload) Doesn't detect identical classes that remain duplicate.
+(nested) Manages pseudo-classes and media queries.
 
 #### jss and jss-without-preset
 

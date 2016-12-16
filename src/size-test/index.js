@@ -64,6 +64,7 @@ Promise.all([
     testBundle('fela'),
     testBundle('free-style'),
     testBundle('glamor'),
+    testBundle('j2c'),
     testBundle('jss'),
     testBundle('jss-without-preset'),
     testBundle('styletron'),
