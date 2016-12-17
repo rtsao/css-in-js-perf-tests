@@ -156,14 +156,19 @@ Fastest is: styletron
 Launch with `npm run bundle`.
 
 ```
-Size styletron 2.652KB
-Size cxs 9.766KB
+Size j2c 4.624KB
+Size cssobj 10.375KB
+Size cssobj-server 7.181KB
+Size free-style 8.3KB
+Size styletron 2.667KB
+Size jss-without-preset 26.183KB
+Size glamor 31.421KB
+Size cxs 9.366KB
 Size fela 13.161KB
-Size cxs-optimized 12.668KB
-Size jss-without-preset 24.654KB
-Size jss 37.04KB
-Size glamor 35.436KB
-Size aphrodite 18.919KB
+Size cxs-optimized 12.268KB
+Size jss 37.185KB
+Size aphrodite 19.711KB
+Size aphrodite-no-important 19.744KB
 ```
 
 ### View generated code
@@ -183,10 +188,17 @@ For all of them, class name is stable between generations if same content. Unles
 (classes overload) Doesn't detect identical classes that remain duplicate.
 (nested) Manages pseudo-classes and media queries.
 
+#### cssobj
+
+(simple) Doesn't remove a non-used class. Generates class names like `original-name_13otckp1_` (customizable suffix).
+(style overload) Different classes with a common style are kept as is.
+(classes overload) Doesn't detect identical classes that remain duplicate.
+(nested) Manages pseudo-classes and media queries.
+
 #### cxs and cxs-optimized
 
 (simple) Doesn't remove a non-used class. Generates class names like `cxs-4211614354`.
-(style overload) Different classes with a common style are kept as is. Minimized CSS.
+(style overload) Different classes with a common style are kept as is.
 (classes overload) Detects identical classes that are merged.
 (nested) Manages pseudo-classes and media queries.
 
@@ -212,6 +224,13 @@ cxs-optimized can generate some specialized classes (with names like `cxs-displa
 (style overload) Different classes with a common style are kept as is.
 (classes overload) Detects identical classes that are merged.
 (nested) Manages pseudo-classes and media queries. Adds selectors like `css-1u8v7v4[data-simulate-hover]`.
+
+#### j2c
+
+(simple) Doesn't remove a non-used class. Generates class names like `original-name_j2c_5atjj2_120pllj_lsbclb_1lwh5gt_0`. Class names change between generations. CSS is minified with newlines.
+(style overload) Different classes with a common style are kept as is.
+(classes overload) Doesn't detect identical classes that remain duplicate.
+(nested) Manages pseudo-classes and media queries.
 
 #### jss and jss-without-preset
 

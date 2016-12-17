@@ -23,3 +23,11 @@ export const createOutputDir = (testName) => {
     }
     return outputDir;
 };
+
+export const toClasses = (css) => {
+    const newCss = {};
+    Object.keys(css).forEach((className) => {
+        newCss[`.${className}`] = css[className];
+    });
+    return newCss;
+};
