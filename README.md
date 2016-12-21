@@ -43,54 +43,71 @@ The first test is just a simple render test, generates two classes, one for a co
 ```
 Running simple test.
 
-aphrodite length 470
-cxs length 400
-cxs-optimized length 445
-fela length 364
-free-style length 374
-glamor length 422
-jss length 447
-jss-without-preset length 443
-styletron length 366
+aphrodite length 582.
+aphrodite-no-important length 472
+cssobj length 641
+cxs length 552
+cxs-optimized length 634
+fela length 421
+free-style length 521
+glamor length 594
+j2c length 748
+jss length 636
+jss-without-preset length 636
+styletron length 502
 
-  aphrodite          x  9,421 ops/sec ±11.15% (61 runs sampled)
-  cxs                x 21,834 ops/sec ±9.34% (65 runs sampled)
-  cxs-optimized      x 17,377 ops/sec ±3.65% (76 runs sampled)
-  fela               x 88,236 ops/sec ±2.32% (78 runs sampled)
-  free-style         x 26,104 ops/sec ±3.70% (73 runs sampled)
-  glamor             x  9,893 ops/sec ±4.66% (74 runs sampled)
-  jss                x 19,535 ops/sec ±12.20% (74 runs sampled)
-  jss-without-preset x 27,642 ops/sec ±5.66% (64 runs sampled)
-  styletron          x 62,560 ops/sec ±10.55% (67 runs sampled)
+Smallest is: fela
 
-Fastest is: fela
+  aphrodite              x  7,037 ops/sec ±12.63% (67 runs sampled)
+  aphrodite-no-important x  7,583 ops/sec ±15.20% (64 runs sampled)
+  cssobj                 x  3,934 ops/sec ±12.31% (61 runs sampled)
+  cxs                    x 13,753 ops/sec ±4.68% (75 runs sampled)
+  cxs-optimized          x  8,202 ops/sec ±10.53% (64 runs sampled)
+  fela                   x 47,681 ops/sec ±10.71% (60 runs sampled)
+  free-style             x  7,704 ops/sec ±16.27% (45 runs sampled)
+  glamor                 x  4,603 ops/sec ±9.38% (66 runs sampled)
+  j2c                    x 10,132 ops/sec ±26.09% (42 runs sampled)
+  jss                    x  9,409 ops/sec ±17.83% (55 runs sampled)
+  jss-without-preset     x 24,151 ops/sec ±3.25% (74 runs sampled)
+  styletron              x 62,287 ops/sec ±2.51% (72 runs sampled)
+
+Fastest is: styletron,fela
 ```
 
 The second test overloads on styles, so it adds `n (ITERATIONS)` amount of different styles with a common part for the buttons. Show which libraries can detect the common part and isolate it.
 
 ```
-Running styles overload test.
+Running style overload test.
 
-aphrodite length 2868
-jss length 2783
-jss-without-preset length 2745
-glamor length 2572
-cxs length 2296
-cxs-optimized length 2337
-styletron length 1370
-fela length 1349
+aphrodite length 3537
+aphrodite-no-important length 2866
+cssobj length 3165
+cxs length 2757
+cxs-optimized length 2874
+fela length 1528
+free-style length 2491
+glamor length 3019
+j2c length 4362
+jss length 3318
+jss-without-preset length 3318
+styletron length 1549
 
+Smallest is: fela
 
-  aphrodite          x  1,446 ops/sec ±2.55% (69 runs sampled)
-  jss                x  3,160 ops/sec ±2.85% (75 runs sampled)
-  jss-without-preset x  4,733 ops/sec ±2.15% (79 runs sampled)
-  glamor             x  1,120 ops/sec ±2.48% (76 runs sampled)
-  cxs                x  2,598 ops/sec ±2.88% (81 runs sampled)
-  cxs-optimized      x  1,957 ops/sec ±2.92% (76 runs sampled)
-  styletron          x 14,782 ops/sec ±2.18% (78 runs sampled)
-  fela               x 14,934 ops/sec ±2.69% (76 runs sampled)
+  aphrodite              x    884 ops/sec ±14.62% (57 runs sampled)
+  aphrodite-no-important x  1,245 ops/sec ±5.38% (69 runs sampled)
+  cssobj                 x    639 ops/sec ±12.48% (66 runs sampled)
+  cxs                    x  2,130 ops/sec ±11.39% (71 runs sampled)
+  cxs-optimized          x  1,418 ops/sec ±14.39% (68 runs sampled)
+  fela                   x  8,832 ops/sec ±14.52% (52 runs sampled)
+  free-style             x  2,151 ops/sec ±11.25% (62 runs sampled)
+  glamor                 x    568 ops/sec ±83.08% (81 runs sampled)
+  j2c                    x  3,331 ops/sec ±4.33% (77 runs sampled)
+  jss                    x  3,159 ops/sec ±7.12% (80 runs sampled)
+  jss-without-preset     x  4,525 ops/sec ±8.19% (71 runs sampled)
+  styletron              x 12,920 ops/sec ±2.47% (73 runs sampled)
 
-Fastest is: fela,styletron
+Fastest is: styletron
 ```
 
 The third test overloads on classes, so it adds `n (ITERATIONS)` amount of different class names with the same styles. This test is interesting to see which library actually merges these styles when they're identical.
@@ -98,26 +115,33 @@ The third test overloads on classes, so it adds `n (ITERATIONS)` amount of diffe
 ```
 Running classes overload test.
 
-aphrodite length 2318
-cxs length 1217
-cxs-optimized length 1217
-fela length 939
-free-style length 1079
-glamor length 1209
-jss length 2359
-jss-without-preset length 2359
-styletron length 960
+aphrodite length 2955
+aphrodite-no-important length 2504
+cssobj length 2795
+cxs length 1334
+cxs-optimized length 1713
+fela length 1078
+free-style length 1173
+glamor length 1283
+j2c length 3950
+jss length 2896
+jss-without-preset length 2896
+styletron length 1099
 
+Smallest is: fela
 
-  aphrodite          x  2,292 ops/sec ±7.38% (68 runs sampled)
-  cxs                x  3,444 ops/sec ±12.54% (66 runs sampled)
-  cxs-optimized      x  3,153 ops/sec ±5.70% (71 runs sampled)
-  fela               x 37,402 ops/sec ±7.99% (67 runs sampled)
-  free-style         x  4,171 ops/sec ±1.95% (80 runs sampled)
-  glamor             x  8,089 ops/sec ±2.90% (79 runs sampled)
-  jss                x  3,927 ops/sec ±5.35% (73 runs sampled)
-  jss-without-preset x  5,798 ops/sec ±8.63% (62 runs sampled)
-  styletron          x 32,160 ops/sec ±8.80% (71 runs sampled)
+  aphrodite              x  1,417 ops/sec ±9.37% (69 runs sampled)
+  aphrodite-no-important x  1,307 ops/sec ±12.81% (59 runs sampled)
+  cssobj                 x    726 ops/sec ±8.21% (64 runs sampled)
+  cxs                    x  3,003 ops/sec ±14.14% (73 runs sampled)
+  cxs-optimized          x  2,161 ops/sec ±16.98% (73 runs sampled)
+  fela                   x 22,818 ops/sec ±13.86% (65 runs sampled)
+  free-style             x  1,975 ops/sec ±21.42% (51 runs sampled)
+  glamor                 x  2,974 ops/sec ±23.82% (43 runs sampled)
+  j2c                    x  1,138 ops/sec ±33.92% (29 runs sampled)
+  jss                    x  2,449 ops/sec ±11.92% (59 runs sampled)
+  jss-without-preset     x  3,788 ops/sec ±15.98% (58 runs sampled)
+  styletron              x 15,134 ops/sec ±15.54% (51 runs sampled)
 
 Fastest is: fela
 ```
@@ -127,26 +151,33 @@ The fourth test is about media queries and pseudo-styles with nested style objec
 ```
 Running nested test.
 
-aphrodite length 813
-cxs length 676
-cxs-optimized length 727
-fela length 540
-free-style length 547
-glamor length 887
-jss length 592
-jss-without-preset length 555
-styletron length 536
+aphrodite length 1179
+aphrodite-no-important length 926
+cssobj length 1089
+cxs length 975
+cxs-optimized length 1061
+fela length 800
+free-style length 802
+glamor length 1335
+j2c length 1339
+jss length 1089
+jss-without-preset length 1089
+styletron length 790
 
+Smallest is: styletron
 
-  aphrodite          x  6,185 ops/sec ±4.80% (75 runs sampled)
-  cxs                x  9,746 ops/sec ±8.49% (77 runs sampled)
-  cxs-optimized      x  8,084 ops/sec ±8.27% (70 runs sampled)
-  fela               x 25,574 ops/sec ±7.74% (73 runs sampled)
-  free-style         x  7,226 ops/sec ±16.29% (61 runs sampled)
-  glamor             x  3,966 ops/sec ±9.45% (75 runs sampled)
-  jss                x  9,697 ops/sec ±2.41% (85 runs sampled)
-  jss-without-preset x 20,610 ops/sec ±16.18% (61 runs sampled)
-  styletron          x 30,576 ops/sec ±9.78% (70 runs sampled)
+  aphrodite              x  2,947 ops/sec ±9.52% (66 runs sampled)
+  aphrodite-no-important x  3,771 ops/sec ±5.87% (72 runs sampled)
+  cssobj                 x  1,507 ops/sec ±9.05% (68 runs sampled)
+  cxs                    x  7,209 ops/sec ±4.26% (74 runs sampled)
+  cxs-optimized          x  4,411 ops/sec ±13.71% (59 runs sampled)
+  fela                   x  7,809 ops/sec ±18.96% (41 runs sampled)
+  free-style             x  3,377 ops/sec ±24.61% (47 runs sampled)
+  glamor                 x  2,398 ops/sec ±7.60% (67 runs sampled)
+  j2c                    x 10,545 ops/sec ±4.80% (73 runs sampled)
+  jss                    x  3,245 ops/sec ±11.23% (62 runs sampled)
+  jss-without-preset     x  5,420 ops/sec ±5.30% (76 runs sampled)
+  styletron              x 20,192 ops/sec ±8.83% (68 runs sampled)
 
 Fastest is: styletron
 ```
