@@ -48,7 +48,7 @@ aphrodite-no-important length 472
 cssobj length 641
 cxs length 552
 cxs-optimized length 634
-fela length 421
+fela length 500
 free-style length 521
 glamor length 594
 j2c length 748
@@ -56,7 +56,7 @@ jss length 636
 jss-without-preset length 636
 styletron length 502
 
-Smallest is: fela
+Smallest is: aphrodite-no-important
 
   aphrodite              x  7,037 ops/sec ±12.63% (67 runs sampled)
   aphrodite-no-important x  7,583 ops/sec ±15.20% (64 runs sampled)
@@ -237,7 +237,7 @@ cxs-optimized can generate some specialized classes (with names like `cxs-displa
 
 #### fela
 
-(simple) Removes a non-used class. Generates class names like `a`, `b`, `c`. Each class has one property only, they are merged at element level.
+(simple) Doesn't remove a non-used class. Generates class names like `a`, `b`, `c`. Each class has one property only, they are merged at element level.
 (style overload) Styles common to several classes go to classes added to all corresponding elements.
 (classes overload) Detects identical classes that are merged.
 (nested) Manages pseudo-classes and media queries.

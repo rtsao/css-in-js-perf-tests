@@ -1,5 +1,5 @@
 import { createRenderer } from 'fela';
-import { containerStyle, buttonStyle } from '../styles';
+import { containerStyle, buttonStyle, notUsedStyle } from '../styles';
 import { renderHtml, renderBody } from '../render';
 
 export const felaCase = (caseName) => {
@@ -8,7 +8,8 @@ export const felaCase = (caseName) => {
     const html = renderBody(
         caseName,
         renderer.renderRule(() => containerStyle),
-        renderer.renderRule(() => buttonStyle)
+        renderer.renderRule(() => buttonStyle),
+        renderer.renderRule(() => notUsedStyle)
     );
 
     const css = renderer.renderToString();
