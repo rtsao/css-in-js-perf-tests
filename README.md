@@ -191,7 +191,7 @@ Size j2c 4.624KB
 Size cssobj 10.375KB
 Size cssobj-server 7.181KB
 Size free-style 8.3KB
-Size styletron 2.667KB
+Size styletron 3.135KB
 Size jss-without-preset 26.183KB
 Size glamor 31.421KB
 Size cxs 9.366KB
