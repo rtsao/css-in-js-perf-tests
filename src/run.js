@@ -26,13 +26,15 @@ export const runTest = (testName, cases) => {
 
         testSuite.on('complete', function onComplete() {
             let smallestSize = Number.MAX_VALUE;
-            let smallest = '?';
+            let smallest = [];
             Object.keys(testCases).forEach((caseName) => {
                 const length = testCases[caseName].result.length;
                 console.log(`${caseName} length`, length);
-                if (smallestSize > length) {
+                if (smallestSize === length) {
+                    smallest = [...smallest, caseName];
+                } else if (smallestSize > length) {
                     smallestSize = length;
-                    smallest = caseName;
+                    smallest = [caseName];
                 }
             });
             console.log(`\nSmallest is: ${smallest}`);
