@@ -31,7 +31,7 @@ export const runTest = (testName, cases) => {
                 const length = testCases[caseName].result.length;
                 console.log(`${caseName} length`, length);
                 if (smallestSize === length) {
-                    smallest = [...smallest, caseName];
+                    smallest.push(caseName);
                 } else if (smallestSize > length) {
                     smallestSize = length;
                     smallest = [caseName];
