@@ -34,8 +34,8 @@ export const runTest = (testName, cases) => (
             const fastest = this.filter('fastest').map('name');
 
             console.log(indent(sizeTable(sizeResults).print()));
-            console.log(indent(`Smallest ${smallest.length < 2 ? 'is ' : 'are'}:         ${smallest.join(', ')}`));
-            console.log(indent(`Smallest gzipped ${smallestGzipped.length < 2 ? 'is ' : 'are'}: ${smallestGzipped.join(', ')}`));
+            console.log(indent(`Smallest ${smallest.length < 2 ? 'is: ' : 'are:'}         ${smallest.join(', ')}`));
+            console.log(indent(`Smallest gzipped ${smallestGzipped.length < 2 ? 'is: ' : 'are:'} ${smallestGzipped.join(', ')}`));
 
             beautifyBenchmark.log();
             console.log(indent(`Fastest ${fastest.length < 2 ? 'is' : 'are'}: ${fastest.join(', ')}\n`));
