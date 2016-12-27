@@ -2,10 +2,10 @@ import fs from 'fs';
 import { Suite } from 'benchmark';
 import beautifyBenchmark from 'beautify-benchmark';
 
-import { toKebabCase, pad, createOutputDir } from './utilities';
+import { toKebabCase, pad, createOutputDir, getSizeResults, sizeTable, indent, getSmallest } from './utilities';
 
-export const runTest = (testName, cases) => {
-    return new Promise((resolve, reject) => {
+export const runTest = (testName, cases) => (
+    new Promise((resolve) => {
         const testCases = {};
 
         Object.keys(cases).forEach((k) => {
@@ -17,7 +17,10 @@ export const runTest = (testName, cases) => {
         const testSuite = new Suite();
 
         Object.keys(testCases).forEach((caseName) => {
-            testSuite.add(caseName, () => { testCases[caseName].result = testCases[caseName].testCase(pad(caseName)); });
+            testSuite.add(
+                caseName,
+                () => { testCases[caseName].result = testCases[caseName].testCase(pad(caseName)); },
+            );
         });
 
         testSuite.on('cycle', (e) => {
@@ -25,30 +28,27 @@ export const runTest = (testName, cases) => {
         });
 
         testSuite.on('complete', function onComplete() {
-            let smallestSize = Number.MAX_VALUE;
-            let smallest = '?';
-            Object.keys(testCases).forEach((caseName) => {
-                const length = testCases[caseName].result.length;
-                console.log(`${caseName} length`, length);
-                if (smallestSize > length) {
-                    smallestSize = length;
-                    smallest = caseName;
-                }
-            });
-            console.log(`\nSmallest is: ${smallest}`);
+            const sizeResults = getSizeResults(testCases);
+            const smallest = getSmallest(sizeResults, 'size').map(s => s.caseName);
+            const smallestGzipped = getSmallest(sizeResults, 'gzippedSize').map(s => s.caseName);
+            const fastest = this.filter('fastest').map('name');
+
+            console.log(indent(sizeTable(sizeResults).print()));
+            console.log(indent(`Smallest ${smallest.length < 2 ? 'is: ' : 'are:'}         ${smallest.join(', ')}`));
+            console.log(indent(`Smallest gzipped ${smallestGzipped.length < 2 ? 'is: ' : 'are:'} ${smallestGzipped.join(', ')}`));
 
             beautifyBenchmark.log();
-            console.log(`Fastest is: ${this.filter('fastest').map('name')}\n`);
+            console.log(indent(`Fastest ${fastest.length < 2 ? 'is' : 'are'}: ${fastest.join(', ')}\n`));
 
             resolve();
         });
 
         testSuite.run({ async: true });
-    });
-};
+    })
+);
 
-export const runView = (testName, cases) => {
-    return new Promise((resolve, reject) => {
+export const runView = (testName, cases) => (
+    new Promise((resolve, reject) => {
         const testCases = {};
 
         Object.keys(cases).forEach((caseName) => {
@@ -72,5 +72,5 @@ export const runView = (testName, cases) => {
                 }
             });
         });
-    });
-};
+    })
+);
