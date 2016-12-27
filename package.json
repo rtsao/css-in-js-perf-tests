@@ -50,9 +50,9 @@
     "jss-nested": "^3.0.0",
     "jss-preset-default": "^1.1.0",
     "rimraf": "^2.5.4",
-    "styletron-client": "^2.1.1",
-    "styletron-server": "^2.1.1",
-    "styletron-utils": "^2.1.0",
+    "styletron-client": "^2.3.0",
+    "styletron-server": "^2.3.0",
+    "styletron-utils": "^2.3.0",
     "webpack": "^1.13.3"
   },
   "devDependencies": {
