@@ -1,1 +1,1 @@
-export const ITERATIONS = process.env.ITERATIONS || 20;
+export const ITERATIONS = parseInt(process.env.ITERATIONS, 10) || 20;
