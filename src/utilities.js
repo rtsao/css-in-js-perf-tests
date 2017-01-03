@@ -1,5 +1,8 @@
 import Table from 'easy-table';
 import fs from 'fs';
+import http from 'http';
+import url from 'url';
+import path from 'path';
 import gzipSize from 'gzip-size';
 
 export const toKebabCase = n =>
@@ -72,3 +75,23 @@ export const indent = (lines, { repeat = 2, character = ' ' } = {}) => (
         .map(line => character.repeat(repeat) + line)
         .join('\n')
 );
+
+export const httpServer = {
+    start(dir, port) {
+        this.server = http.createServer((req, res) => {
+            var filename = path.join(dir, '..', url.parse(req.url).pathname);
+            fs.stat(filename, (err, stat) => {
+                if (!err && stat.isFile()) {
+                    res.writeHead(200, 'text/html');
+                    fs.createReadStream(filename).pipe(res);
+                } else {
+                    res.end();
+                }
+            });
+        });
+        this.server.listen(port);
+    },
+    stop() {
+        this.server.close();
+    }
+}

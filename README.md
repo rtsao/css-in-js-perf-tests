@@ -12,6 +12,14 @@ To set the amount of iterations (see below) you can set an environment variable 
 
 > Make sure you have Node6 or higher installed as well.
 
+### Rendering tests
+
+For results on how each case renders on the browser, 
+
+1. [download Chromedriver](https://sites.google.com/a/chromium.org/chromedriver/downloads) and start it
+2. Run `npm run compile`
+3. Run `ITERATIONS=5000 npm run browserBench`
+
 ## Specs
 
 The specs from the machine on which the tests were run:
