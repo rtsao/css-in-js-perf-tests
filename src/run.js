@@ -62,15 +62,9 @@ export const runView = (testName, cases) => (
         Object.keys(testCases).forEach((caseName) => {
             const html = testCases[caseName].testCase(pad(caseName));
             const path = `${outputDir}/${caseName}.html`;
-            fs.writeFile(path, html, (err) => {
-                if (err) {
-                    console.error(err);
-                    reject(err);
-                } else {
-                    console.log(`Wrote ${path}`);
-                    resolve(path);
-                }
-            });
+            fs.writeFileSync(path, html);
+            console.log(`Wrote ${path}`);
         });
+        resolve(outputDir);
     })
 );
